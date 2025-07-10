@@ -582,6 +582,7 @@ main h2.c {
 /*ご利用の流れ
 ---------------------------------------------------------------------------*/
 .list.up p {
+  margin-top: 12px;
 	margin-bottom: 12px;  /* 段落間の余白調整 */
 	line-height: 1.5;
 	letter-spacing: 0.05em;
