@@ -637,6 +637,13 @@ main h2.c {
   background-image: url('../images/prev.png');
 }
 
+@media screen and (max-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}
+
 /* disabled時の透明度解除 */
 .swiper-button-next.swiper-button-disabled,
 .swiper-button-prev.swiper-button-disabled {
