@@ -12,6 +12,7 @@
 ---------------------------------------------------------------------------*/
 @import url("inview.css");
 @import url("mainimg.css");
+@import url("reset.css");
 
 /*CSSカスタムプロパティ（サイト全体を一括管理する為の設定）
 ---------------------------------------------------------------------------*/
@@ -510,8 +511,21 @@ main h2.c {
   }
 } /*追加指定ここまで*/
 
-/*list-grid7（サービス紹介ブロック）
----------------------------------------------------------------------------*/
+/*ボックス内のh4見出し*/
+.list-grid7 .list h4 {
+  text-align: center; /*テキストをセンタリング*/
+  font-size: 1.3rem; /*文字サイズ130%*/
+  margin-bottom: 0.5rem; /*下に0.5文字分の余白を空ける*/
+  color: var(
+    --primary-color
+  ); /*文字色。css冒頭のprimary-colorを読み込みます。*/
+
+  min-height: 4.5rem; /* 高さを固定 or 最低高さに設定 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .list-grid7 .list * {
   margin: 0;
   padding: 0;
@@ -532,23 +546,9 @@ main h2.c {
   grid-template-rows: auto 4.5rem 1fr auto; /* 4.5remはh4の高さ調整 */
 }
 
-/*ボックス内のh4見出し*/
-.list-grid7 .list h4 {
-  text-align: center; /*テキストをセンタリング*/
-  font-size: 1.3rem; /*文字サイズ130%*/
-  margin-bottom: 0.5rem; /*下に0.5文字分の余白を空ける*/
-  color: var(
-    --primary-color
-  ); /*文字色。css冒頭のprimary-colorを読み込みます。*/
-
-  min-height: 4.5rem; /* 高さを固定 or 最低高さに設定 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 /*h4内のspan（小さな装飾文字）*/
 .list-grid7 .list h4 span {
+  color: var(--primary-color);
   display: block;
   font-weight: normal; /*デフォルトだと太字なので標準に*/
   font-size: 0.7em; /*文字サイズを70%*/
@@ -564,6 +564,119 @@ main h2.c {
 .list-grid7 .list figure {
   margin: 0 auto;
   margin-bottom: 1rem; /*画像の下に空けるスペース*/
+}
+
+/* Swiper全体のサイズ調整 */
+.swiper {
+  width: 100%;
+  max-width: 700px;
+  height: 710px;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 40px auto;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.swiper-slide .list.up h4 {
+  text-align: left;
+  padding-left: 23px; /* 全体の左余白 */
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.swiper-slide .list.up h4 span {
+  display: inline; /* デフォルトなので省略可 */
+  margin-left: 10px; /* 親テキストからの横の間隔だけ空ける */
+  font-size: 0.8em; /* 小さくしたい場合など */
+  color: #fff; /* 色を薄くするなど装飾 */
+}
+
+.swiper-slide .list.up p {
+  text-align: left;
+}
+
+.text-overlay h2 {
+  margin: 0 0 8px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #d4b86a;
+}
+
+.text-overlay p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #f0e6b9;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "";
+  display: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+/* カスタム背景画像 */
+.swiper-button-next {
+  background-image: url('/images/next.png');
+}
+.swiper-button-prev {
+  background-image: url('/images/prev.png');
+}
+
+/* disabled時の透明度解除 */
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+
+/* ページネーション */
+.swiper-pagination-bullet {
+  background: hsl(249, 93%, 46%);
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #fff;
+}
+
+/* 画像は幅100%で自然な高さ */
+.swiper-slide figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* 画像下テキストボックス */
+.swiper-slide .list.up {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 /*画面幅800px以上の追加指定*/
@@ -583,21 +696,21 @@ main h2.c {
 ---------------------------------------------------------------------------*/
 .list.up p {
   margin-top: 12px;
-	margin-bottom: 12px;  /* 段落間の余白調整 */
-	line-height: 1.5;
-	letter-spacing: 0.05em;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-  }
-  
-  .list.up p.section-title {
-	margin-top: 20px;
-	margin-bottom: 8px;
-	font-weight: 700;
-	color: var(--primary-color);
-  }
-  
-  
+  margin-bottom: 12px; /* 段落間の余白調整 */
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.list.up p.section-title {
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
 .flow-box * {
   margin: 0;
   padding: 0;

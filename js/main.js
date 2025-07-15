@@ -389,22 +389,35 @@ $(document).ready(function() {
 //===============================================================
 // テキストのフェードイン効果
 //===============================================================
+
+// jQuery部分：フェードインテキスト
 $(function() {
-    $('.fade-in-text').on('inview', function(event, isInView) {
-        // この要素が既にアニメーションされたかどうかを確認
-        if (isInView && !$(this).data('animated')) {
-            // アニメーションがまだ実行されていない場合
-            let innerHTML = '';
-            const text = $(this).text();
-            $(this).text('');
+  $('.fade-in-text').on('inview', function(event, isInView) {
+    if (isInView && !$(this).data('animated')) {
+      let innerHTML = '';
+      const text = $(this).text();
+      $(this).text('');
+      for (let i = 0; i < text.length; i++) {
+        innerHTML += `<span class="char" style="animation-delay: ${i * 0.1}s;">${text[i]}</span>`;
+      }
+      $(this).html(innerHTML).css('visibility', 'visible');
+      $(this).data('animated', true);
+    }
+  });
+});
 
-            for (let i = 0; i < text.length; i++) {
-                innerHTML += `<span class="char" style="animation-delay: ${i * 0.1}s;">${text[i]}</span>`;
-            }
-
-            $(this).html(innerHTML).css('visibility', 'visible');
-            // アニメーションが実行されたことをマーク
-            $(this).data('animated', true);
-        }
-    });
+// swiper
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 1,
+  centeredSlides: true,
+  spaceBetween: 20,
+  autoHeight: true,  // これがポイント
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
 });
