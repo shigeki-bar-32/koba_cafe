@@ -248,7 +248,7 @@ window.addEventListener('resize', setDynamicHeight);
   })();
 
   // 動画ファイルがサイトルート直下の "videos" フォルダにある想定
-  var imgBase = '/videos/';
+  var imgBase = './videos/';
 
   $(function(){
     var filesPortrait  = ['koba_cafe-01.mp4', 'koba_cafe-02.mp4', 'koba_cafe-03.mp4'],
