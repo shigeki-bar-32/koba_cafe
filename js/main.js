@@ -241,28 +241,25 @@ window.addEventListener('resize', setDynamicHeight);
 //===============================================================
 // 即時関数で囲って、document.currentScript をキャプチャ
 (function(){
-  // 現在実行中のスクリプト要素を取得
+  // スクリプトURLの取得は残しますが、imgBaseは絶対パス指定に変更
   var scriptEl = document.currentScript || (function(){
     var ss = document.getElementsByTagName('script');
     return ss[ss.length - 1];
   })();
 
-  // スクリプト URL からフォルダ部分だけを取り出す（例: .../project/js/）
-  var scriptDir = scriptEl.src.replace(/\/[^\/]+$/, '/');
-  // images フォルダはスクリプトの１つ上なので ../images/ を連結
-  var imgBase = scriptDir + '../images/';
+  // 動画ファイルがサイトルート直下の "videos" フォルダにある想定
+  var imgBase = '/videos/';
 
-  // スライドショー本体
   $(function(){
-    var filesPortrait  = ['1-tate.mp4','2-tate.mp4','3-tate.mp4'],
-        filesLandscape = ['1-yoko.mp4','2-yoko.mp4','3-yoko.mp4'],
+    var filesPortrait  = ['koba_cafe-01.mp4', 'koba_cafe-02.mp4', 'koba_cafe-03.mp4'],
+        filesLandscape = ['koba_cafe-01.mp4', 'koba_cafe-02.mp4', 'koba_cafe-03.mp4'],
         slideInterval, currentIndex = 0, currentOrientation;
 
     function setVideoSources(orientation) {
       var files = orientation === 'portrait' ? filesPortrait : filesLandscape;
       $('#mainimg').find('video').each(function(i){
         this.pause();
-        this.src   = imgBase + files[i];
+        this.src = imgBase + files[i];
         this.load();
         $(this).removeClass('active');
       });
@@ -270,7 +267,7 @@ window.addEventListener('resize', setDynamicHeight);
 
     function showSlide(idx) {
       $('#mainimg').find('video').each(function(i){
-        if (i === idx) {
+        if(i === idx){
           this.currentTime = 0;
           this.play();
           $(this).addClass('active');
@@ -282,40 +279,41 @@ window.addEventListener('resize', setDynamicHeight);
     }
 
     function startSlideshow() {
-      currentOrientation = window.matchMedia('(orientation: portrait)').matches
-        ? 'portrait' : 'landscape';
+      currentOrientation = window.matchMedia('(orientation: portrait)').matches ? 'portrait' : 'landscape';
       setVideoSources(currentOrientation);
       currentIndex = 0;
       showSlide(currentIndex);
       slideInterval = setInterval(function(){
         currentIndex = (currentIndex + 1) % $('#mainimg').find('video').length;
         showSlide(currentIndex);
-      }, 4000);	//4秒ごとにスライド
+      }, 4000);
     }
 
-    function stopSlideshow() { clearInterval(slideInterval); }
+    function stopSlideshow() {
+      clearInterval(slideInterval);
+    }
 
     function handleOrientationChange() {
-      var newO = window.matchMedia('(orientation: portrait)').matches
-        ? 'portrait' : 'landscape';
-      if (newO !== currentOrientation) {
+      var newO = window.matchMedia('(orientation: portrait)').matches ? 'portrait' : 'landscape';
+      if(newO !== currentOrientation){
         stopSlideshow();
         startSlideshow();
       }
     }
 
-    function debounce(fn, wait){
-      var t; return function(){
+    function debounce(fn, wait) {
+      var t;
+      return function() {
         clearTimeout(t);
         t = setTimeout(fn, wait);
       };
     }
 
-    // 初期起動＆画面回転（リサイズ）対応
     startSlideshow();
     $(window).on('resize', debounce(handleOrientationChange, 200));
   });
 })();
+
 
 
 //===============================================================
