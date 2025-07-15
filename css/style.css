@@ -569,8 +569,9 @@ main h2.c {
 /* Swiper全体のサイズ調整 */
 .swiper {
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   height: 710px;
+  padding-top: 35px;
   padding-left: 0;
   padding-right: 0;
   margin: 40px auto;

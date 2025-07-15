@@ -405,11 +405,35 @@ $(function() {
 });
 
 // swiper
+// var swiper = new Swiper(".mySwiper", {
+//   slidesPerView: 1,
+//   centeredSlides: true,
+//   spaceBetween: 20,
+//   autoHeight: true,  // これがポイント
+//   pagination: {
+//     el: ".swiper-pagination",
+//     clickable: true,
+//   },
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+// });
+
+
 var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
+  effect: "coverflow",
+  grabCursor: true,
   centeredSlides: true,
-  spaceBetween: 20,
-  autoHeight: true,  // これがポイント
+  slidesPerView: 3,
+  loop: true,
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: true,
+  },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -418,4 +442,21 @@ var swiper = new Swiper(".mySwiper", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      centeredSlides: true,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
 });
+
+
+
+
+
