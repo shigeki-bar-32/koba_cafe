@@ -1147,14 +1147,54 @@ ul.step li:last-child::after {
 }
 
 
-
+/* cafe owner画像 */
 .intro-image img {
+  transition: transform 0.3s ease;
+  cursor: pointer;
   width: 200px;
   height: 100%; /* 親要素の高さに合わせる */
   border-radius: 10px;
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
+
+@media (hover: hover) {
+  .intro-image img:hover {
+    transform: scale(1.1);
+  }
+}
+
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90vh;
+  box-shadow: 0 0 10px #fff;
+  border-radius: 4px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 
 .intro-text {
   flex: 1;
@@ -1222,29 +1262,34 @@ ul.step li:last-child::after {
 }
 
 
-.footer1 small {
-  font-size: 1.0rem;      /* 少し小さめで控えめに */
-  color: #fff;             /* 薄いグレーで主張控えめ */
-  font-style: italic;      /* イタリックでやわらかい印象 */
-}
+
 
 
 /*著作部分（※意図的に見えなくしたりしないで下さい。規約違反になります。）
 ---------------------------------------------------------------------------*/
-.pr a {
-  text-decoration: none;
-  display: block;
-  background: #555;
-  color: #ccc;
-  text-align: right;
+.footer-bottom {
+  display: flex;
+  justify-content: space-between; /* 左右に分ける */
+  align-items: center;            /* 高さを揃える */
   padding: 0.5rem 1rem;
+  background: #555;
   font-size: 0.8rem;
 }
-.pr a::before {
-  font-family: "Font Awesome 6 Free";
-  content: "\e2ca";
-  font-weight: bold;
-  margin-right: 0.5em;
+
+.footer-bottom a {
+  text-decoration: none;
+  color: #ccc;
+  display: inline-block;
+  line-height: 1.5;
+}
+
+.pr a {
+  text-align: left;  /* 左寄せ */
+}
+
+.pl a {
+  text-align: right; /* 右寄せ */
+  font-style: italic;
 }
 
 /*PAGE TOP（↑）設定

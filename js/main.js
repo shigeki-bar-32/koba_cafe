@@ -450,6 +450,10 @@ document.querySelectorAll('.btn-toggle').forEach(btn => {
     btn.textContent = container.classList.contains('expanded') ? '閉じる' : 'もっと見る';
   });
 });
+//===============================================================
+// modal
+//==============================================
+
 
 
 
