@@ -404,23 +404,6 @@ $(function() {
   });
 });
 
-// swiper
-// var swiper = new Swiper(".mySwiper", {
-//   slidesPerView: 1,
-//   centeredSlides: true,
-//   spaceBetween: 20,
-//   autoHeight: true,  // これがポイント
-//   pagination: {
-//     el: ".swiper-pagination",
-//     clickable: true,
-//   },
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-// });
-
-
 var swiper = new Swiper(".mySwiper", {
   effect: "coverflow",
   grabCursor: true,
@@ -454,6 +437,18 @@ var swiper = new Swiper(".mySwiper", {
       slidesPerView: 3,
     },
   },
+});
+
+//===============================================================
+// もっと見る
+//===============================================================
+
+document.querySelectorAll('.btn-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const container = btn.previousElementSibling; // ボタンの直前の.text-collapse div
+    container.classList.toggle('expanded');
+    btn.textContent = container.classList.contains('expanded') ? '閉じる' : 'もっと見る';
+  });
 });
 
 
