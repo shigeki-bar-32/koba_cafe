@@ -443,16 +443,50 @@ var swiper = new Swiper(".mySwiper", {
 // もっと見る
 //===============================================================
 
+
+// 中央スライド以外のボタンは非表示にし、展開は閉じる処理
+function updateSlides() {
+  const slides = document.querySelectorAll('.swiper-slide');
+  const activeIndex = swiper.activeIndex;
+
+  slides.forEach((slide, index) => {
+    const btn = slide.querySelector('.btn-toggle');
+    const container = slide.querySelector('.text-collapse');
+
+    if (!btn || !container) return;
+
+    if (index === activeIndex) {
+      btn.style.display = 'inline-block'; // 中央だけボタン表示
+    } else {
+      btn.style.display = 'none';          // その他非表示
+      if (container.classList.contains('expanded')) {
+        container.classList.remove('expanded'); // 開いていれば閉じる
+        btn.textContent = 'もっと見る';        // ボタン文言リセット
+      }
+    }
+  });
+}
+
+// 初期表示時も呼ぶ
+updateSlides();
+
+// スライド切り替え開始時に処理
+swiper.on('slideChangeTransitionStart', () => {
+  updateSlides();
+});
+
+// ボタンのクリックイベント登録（展開・折りたたみ）
 document.querySelectorAll('.btn-toggle').forEach(btn => {
   btn.addEventListener('click', () => {
-    const container = btn.previousElementSibling; // ボタンの直前の.text-collapse div
+    const container = btn.previousElementSibling; // 直前のテキストコンテナ
     container.classList.toggle('expanded');
     btn.textContent = container.classList.contains('expanded') ? '閉じる' : 'もっと見る';
   });
 });
-//===============================================================
-// modal
-//==============================================
+
+
+
+
 
 
 
