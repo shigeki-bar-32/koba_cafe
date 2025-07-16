@@ -1091,59 +1091,104 @@ ul.step li:last-child::after {
   height: 100%;
 }
 
-/*フッター内の受付時間テーブル
+/*フッター内のintro-section(自己紹介)
 ---------------------------------------------------------------------------*/
-.week {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  overflow: hidden;
-  border-radius: 5px; /*角を丸くする指定*/
-  border: 1px solid #ccc; /*テーブル外側の線の幅、線種、色*/
-  table-layout: fixed; /*幅を均等に*/
-  background: #fff; /*テーブル全体の背景色*/
-  color: #555; /*テーブル全体の文字色*/
+.intro-section {
+  width: 650px; 
+  margin: 2rem auto; /* 中央寄せ */
+  display: flex;
+  align-items: stretch; /* ここを center → stretch に変更 */
+  gap: 11px;
+
+  background-color: #fff8f0; /* 全体の背景色（柔らかいクリーム系） */
+  padding: 3rem;
+  border-radius: 15px;
+  box-sizing: border-box; /* paddingも幅に含める */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* 軽い影で浮き上がる感じ */
 }
 
-/*受付時間の幅*/
-.week th:first-child,
-.week td:first-child {
-  width: 25%;
+
+
+.intro-image img {
+  width: 200px;
+  height: 100%; /* 親要素の高さに合わせる */
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/*各曜日の幅*/
-.week th:not(:first-child),
-.week td:not(:first-child) {
-  width: calc(75% / 7); /*受付時間で25%とっているので残りの75%を7で割る*/
+.intro-text {
+  flex: 1;
 }
 
-/*th(曜日)とtd(時間)*/
-.week th,
-.week td {
-  padding: 1rem 0; /*ボックス内の余白。上下に１文字分、左右は0。*/
-  text-align: center; /*テキストをセンタリング*/
-  border-bottom: 1px solid #ccc; /*下の線の幅、線種、色*/
-  border-right: 1px solid #ccc; /*右の線の幅、線種、色*/
+.intro-text h3 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #000;
 }
 
-/*th(曜日)とtd(時間)のそれぞれ最後の右側の線を消す*/
-.week th:last-child,
-.week td:last-child {
-  border-right: none;
+.intro-text p {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.6;
+  color: #333;
 }
 
-/*最後の行の下線を消す*/
-.week tr:last-child td {
-  border-bottom: none;
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  .intro-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 95%;          /* 画面幅の95%を使用 */
+    max-width: 400px;    /* 最大幅を制限 */
+    margin: 2rem auto;
+    padding: 1.5rem 1rem; /* パディング控えめ */
+  }
+  
+  .intro-image {
+    padding: 0;           /* 余白なし */
+    width: 100%;          /* 親に合わせる */
+  }
+ 
+  .intro-image img {
+    width: 100%;          /* 横幅いっぱい */
+    height: auto;         /* 自動高さ */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .intro-text p {
+    margin-bottom: 1rem; /* 段落間の余白 */
+    line-height: 1.6;    /* 行間 */
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    color: #333;
+  }
+  
+  
+  .intro-text h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
 }
 
-/*th(曜日)の追加指定*/
-.week th {
-  background: #fafafa; /*背景色*/
+.footer1 {
+  max-width: 650px; /* intro-sectionと同じ幅 */
+  margin: 0 auto;   /* 横中央寄せ */
+  text-align: center;
 }
-.week td {
-  border-bottom: 1px solid #ccc; /*下の線の幅、線種、色*/
+
+
+.footer1 small {
+  font-size: 1.0rem;      /* 少し小さめで控えめに */
+  color: #fff;             /* 薄いグレーで主張控えめ */
+  font-style: italic;      /* イタリックでやわらかい印象 */
 }
+
 
 /*著作部分（※意図的に見えなくしたりしないで下さい。規約違反になります。）
 ---------------------------------------------------------------------------*/
