@@ -570,15 +570,21 @@ main h2.c {
 .swiper {
   width: 100%;
   max-width: 1000px;
-  height: 720px;
   padding-top: 35px;
   padding-left: 0;
   padding-right: 0;
+  padding-bottom: 60px;
   margin: 40px auto;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
+}
+
+.swiper-slide figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 333/196;
 }
 
 .swiper-slide .list.up h4 {
@@ -600,12 +606,17 @@ main h2.c {
   text-align: left;
 }
 
+.swiper-slide .text-collapse::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), black 90%);
+}
+
 .text-overlay h2 {
   margin: 0 0 8px;
   font-size: 1.8rem;
   font-weight: bold;
   color: #d4b86a;
 }
+
 
 .text-overlay p {
   margin: 0;
@@ -1284,18 +1295,11 @@ ul.step li:last-child::after {
   font-size: 0.8rem;
 }
 
-.footer-bottom a {
+.footer-bottom .pl {
   text-decoration: none;
   color: #ccc;
   display: inline-block;
   line-height: 1.5;
-}
-
-.pr a {
-  text-align: left;  /* 左寄せ */
-}
-
-.pl a {
   text-align: right; /* 右寄せ */
   font-style: italic;
 }
