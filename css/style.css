@@ -570,6 +570,7 @@ main h2.c {
 .swiper {
   width: 100%;
   max-width: 1000px;
+  height: 720px;
   padding-top: 35px;
   padding-left: 0;
   padding-right: 0;
@@ -620,7 +621,7 @@ main h2.c {
 
 .text-overlay p {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.4;
   color: #f0e6b9;
 }
@@ -1287,9 +1288,7 @@ ul.step li:last-child::after {
 /*著作部分（※意図的に見えなくしたりしないで下さい。規約違反になります。）
 ---------------------------------------------------------------------------*/
 .footer-bottom {
-  display: flex;
-  justify-content: space-between; /* 左右に分ける */
-  align-items: center;            /* 高さを揃える */
+  text-align: center;
   padding: 0.5rem 1rem;
   background: #555;
   font-size: 0.8rem;
@@ -1300,7 +1299,6 @@ ul.step li:last-child::after {
   color: #ccc;
   display: inline-block;
   line-height: 1.5;
-  text-align: right; /* 右寄せ */
   font-style: italic;
 }
 

@@ -251,8 +251,8 @@ window.addEventListener('resize', setDynamicHeight);
   var imgBase = './videos/';
 
   $(function(){
-    var filesPortrait  = ['koba_cafe-01.mp4', 'koba_cafe-02.mp4', 'koba_cafe-03.mp4'],
-        filesLandscape = ['koba_cafe-01.mp4', 'koba_cafe-02.mp4', 'koba_cafe-03.mp4'],
+    var filesPortrait  = ['koba_cafe-01.mp4', 'koba_cafe-02.mp4', 'koba_cafe-03.mp4', 'koba_cafe-04.mp4', 'koba_cafe-05.mp4'],
+        filesLandscape = ['koba_cafe-01.mp4', 'koba_cafe-02.mp4', 'koba_cafe-03.mp4', 'koba_cafe-04.mp4', 'koba_cafe-05.mp4'],
         slideInterval, currentIndex = 0, currentOrientation;
 
     function setVideoSources(orientation) {
